@@ -8,8 +8,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>bugunneredeyesem</name>
-	<description>Her gün neredem yesem derdine son</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
