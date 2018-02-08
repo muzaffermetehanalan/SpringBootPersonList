@@ -17,6 +17,11 @@ import javax.persistence.Table;
 @Table(name="jobs" ,schema ="myapp")
 public class Jobs {
 	@ManyToMany
+    	@JoinTable(
+        name = "Job_Person", 
+        joinColumns = { @JoinColumn(name = "jobId") }, 
+        inverseJoinColumns = { @JoinColumn(name = "person_id") }
+    	)
 	private List<Person> people;
 	
 	public List<Person> getPeople() {
