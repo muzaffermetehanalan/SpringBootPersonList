@@ -4,7 +4,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="person")
+@Table(name="person" , schema = "personlistspring")
 public class Person implements Serializable {
 	
 	@ManyToMany(mappedBy="people")
