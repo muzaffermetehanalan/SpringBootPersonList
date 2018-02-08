@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="jobs")
+@Table(name="jobs" ,schema ="myapp")
 public class Jobs {
 	@ManyToMany
 	private List<Person> people;
