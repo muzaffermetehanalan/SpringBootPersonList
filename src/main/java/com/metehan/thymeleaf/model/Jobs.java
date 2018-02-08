@@ -8,7 +8,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="jobs" ,schema ="myapp")
+@Table(name="jobs")
 public class Jobs {
 	@ManyToMany
     	@JoinTable(
