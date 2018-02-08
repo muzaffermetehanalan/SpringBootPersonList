@@ -8,7 +8,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="jobs")
+@Table(name="jobs", schema = "personlistspring")
 public class Jobs {
 	@ManyToMany
     	@JoinTable(
