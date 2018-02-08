@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+</head>
+	<title> Update Person </title>
+	<body>
+			<nav class="navbar navbar-default" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{personList}">Person List</a>
+        </div>
+        </div>
+        </nav>
+
+
+<div class="container">
+    <h2>Update Person</h2>
+    <form th:action="@{/updatePerson}" method="PUT" th:object="${per}" >
+        <div  class="form-group">
+           <label for="id">Person ID:</label>
+            <input type="text" class="form-control" th:value="${per.person_id}" id="person_id" placeholder="ID" name="person_id" > </input>
+            <label for="firstName">Person Name:</label>
+            <input type="text" class="form-control" th:value="${per.firstName}" id="firstName" placeholder="Name" name="firstName" > </input>
+            <label for="lastName">Person Lastname:</label>
+            <input type="text" class="form-control" th:value="${per.lastName}" id="lastName" placeholder="Lastname" name="lastName" > </input>
+            <label for="email">Person Email:</label>
+            <input type="email" class="form-control" th:value="${per.email}" id="email" placeholder="Email" name="email" > </input>
+            <label for="email">Person Password:</label>
+            <input type="password" class="form-control" th:value="${per.password}" id="password" placeholder="Password" name="password" > </input>
+            <label>User Type:</label>
+           <select class="input-large form-control" name="memberType">
+           <option value="admin" selected="selected">Admin</option>
+           <option value="user" name="role">User</option>
+            </select> 
+            
+   			    <ul>
+        <li th:each="job : ${jobs}">
+            <input type="checkbox" name="listJobs" th:value="${job.jobId}"/>
+            <label th:text="${job.jobName}"></label>
+        </li>
+   			 </ul>
+
+              
+        </div>
+        <button type="submit" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-thumbs-up"></span> Submit</button>
+        
+    </form>
+</div>
+</body>
+</html>

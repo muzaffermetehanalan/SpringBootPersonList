@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+   
+      <meta charset="UTF-8" />
+      <title>Add Job</title>
+   </head>
+	<body >
+			<nav class="navbar navbar-default" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{personList}">Person List</a>
+        </div>
+        </div>
+        </nav>
+      <h1>Create a Job:</h1>
+       
+      <!--  
+         In Thymeleaf the equivalent of
+         JSP's ${pageContext.request.contextPath}/edit.html
+         would be @{/edit.html}         
+         -->
+          
+      <div class="container">   
+          
+      <form th:action="@{/addJob}"
+         th:object="${job}" method="POST">
+         <div  class="form-group">
+         <label for="jobName">Job Name:</label>
+         <input type="text" class="form-control" id="jobName" placeholder="Job Name..." name="jobName"/>    
+         
+          <div th:if="${jobMessage}" th:utext="${jobMessage}"
+          style="color:#ff4000;font-style:courier;">
+         ...
+      	</div>
+      	
+      	<div th:if="${jobSMessage}" th:utext="${jobSMessage}"
+         style="color:#00ff80 ;font-style:courier;">
+         ...
+      	</div>
+
+  
+         </div>
+         <button type="submit" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-thumbs-up"></span> Create</button>
+               <br/><br/>      <br/><br/>
+
+      </form>
+       </div>
+      <br/>
+      
+
+       
+
+       
+
+       
+   </body>
+</html>

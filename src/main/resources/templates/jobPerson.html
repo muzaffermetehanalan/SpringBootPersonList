@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+       <style> 	  
+ /* LIST #2 */
+#list2 { width:320px; }
+#list2 ol { font-style:italic; font-family:Georgia, Times, serif; font-size:24px; color:#050100;  }
+#list2 ol li { }
+#list2 ol li p { padding:8px; font-style:normal; font-family:Arial; font-size:13px; color:#eee; border-left: 1px solid #999; }
+#list2 ol li p em { display:block; }
+</style>
+<title> Job List </title>
+</head>
+		<body>
+		<nav class="navbar navbar-default" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{personList}">Person List</a>
+        </div>
+        </div>
+        </nav>
+
+			<br/><br/>      <br/><br/>
+         <div id="list2">  
+   		<ol>
+        <li th:each="job : ${jobs}" > <em>
+            <label th:text="${job.jobName}"></label> </em>
+        </li>
+   	  </ol>
+   		</div>  
+	
+
+
+            
+</body>
+</html>

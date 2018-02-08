@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+      <title>Welcome</title>
+   </head>
+   	<body>
+   	
+    <h1 th:text=" Welcome + ' ' + ${person.firstName} + ' ' + ${person.lastName}" > </h1> 
+      <!--  
+       
+         In Thymeleaf the equivalent of
+         JSP's ${pageContext.request.contextPath}/edit.html
+         would be @{/edit.html}
+          
+         -->
+          
+      <a th:href="@{/personList}" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-list-alt"></span> Person List </a>  
+       
+   </body>
+    
+</html>
