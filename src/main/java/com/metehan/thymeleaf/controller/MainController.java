@@ -162,7 +162,8 @@ public class MainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+	    
+	pRepo.save(newP);
         
         return "redirect:/personList";
     }
