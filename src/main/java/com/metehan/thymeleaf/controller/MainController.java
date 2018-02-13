@@ -12,10 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.metehan.thymeleaf.repository.JobRepository;
 import com.metehan.thymeleaf.repository.PersonRepository;
+import com.metehan.thymeleaf.service.MailService;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 //import org.slf4j.Logger;
@@ -25,7 +28,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  
 @Controller
 public class MainController {
-
+	@Autowired
+     	private MailService mailService;
 	//private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	 @Autowired
 	 private PersonRepository pRepo;
@@ -137,8 +141,8 @@ public class MainController {
     		return modelAndView;
     } 
      
-    @RequestMapping(value = {"updatePerson"}, method = RequestMethod.GET)
-    public String updatePerson(@ModelAttribute Person per,@RequestParam List<String> listJobs,Model model){
+     @RequestMapping(value = {"updatePerson"}, method = RequestMethod.GET)
+    public String updatePerson(@ModelAttribute Person per,@RequestParam(required=false)  List<String> listJobs,Model model){
 		Jobs tempJob = new Jobs();
     		Person newP = pRepo.findOne(Integer.valueOf(per.getPerson_id()));
     		if(listJobs != null) {
@@ -146,11 +150,18 @@ public class MainController {
     				tempJob  = jRepo.findOne(Integer.valueOf(listJobs.get(i)));
     				if(! tempJob.getPeople().contains(newP)) {
     					tempJob.addPerson(per);
+    					jRepo.save(tempJob);
     				}	
     			}
     		}
 
-        pRepo.save(per);
+		newP = pRepo.findOne(Integer.valueOf(per.getPerson_id()));
+        try {
+			mailService.sendEmail(newP);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         
         return "redirect:/personList";
