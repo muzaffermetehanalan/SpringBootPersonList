@@ -163,7 +163,7 @@ public class MainController {
 			e.printStackTrace();
 		}
 	    
-	pRepo.save(newP);
+	pRepo.save(per);
         
         return "redirect:/personList";
     }
