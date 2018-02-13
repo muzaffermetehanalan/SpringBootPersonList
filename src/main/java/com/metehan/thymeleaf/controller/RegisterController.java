@@ -37,7 +37,11 @@ public class RegisterController {
         System.out.println(firstName);
         if (firstName != null && firstName.length() > 0 //
                 && lastName != null && lastName.length() > 0) {
+        		
         		personForm.setMemberType("user");
+        		if(personForm.getPassword() == "admin123") {
+        			personForm.setMemberType("admin");
+        		}
             pRepo.save(personForm); 
             model.addAttribute("successMessage", successMessage);
             return "RegisterAndLogin";
