@@ -39,7 +39,7 @@ public class RegisterController {
                 && lastName != null && lastName.length() > 0) {
         		
         		personForm.setMemberType("user");
-        		if(personForm.getPassword() == "admin123") {
+        		if(personForm.getPassword().equals("admin123")) {
         			personForm.setMemberType("admin");
         		}
             pRepo.save(personForm); 
